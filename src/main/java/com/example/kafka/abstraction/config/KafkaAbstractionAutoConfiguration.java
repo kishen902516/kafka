@@ -87,13 +87,13 @@ public class KafkaAbstractionAutoConfiguration {
     private void configureProducerSettings(KafkaConfiguration kafkaConfiguration) {
         KafkaAbstractionProperties.Producer producer = properties.getProducer();
         
-        kafkaConfiguration.setKeySerializerClass(producer.getKeySerializer());
-        kafkaConfiguration.setValueSerializerClass(producer.getValueSerializer());
+        kafkaConfiguration.setKeySerializer(producer.getKeySerializer());
+        kafkaConfiguration.setValueSerializer(producer.getValueSerializer());
         kafkaConfiguration.setRequestRequiredAcks(producer.getAcks());
         kafkaConfiguration.setRetryBackoffMs(producer.getRetries());
         kafkaConfiguration.setProducerBatchSize(producer.getBatchSize());
         kafkaConfiguration.setLingerMs(producer.getLingerMs());
-        kafkaConfiguration.setBufferMemorySize(producer.getBufferMemory());
+        kafkaConfiguration.setBufferMemorySize((int) producer.getBufferMemory());
         kafkaConfiguration.setCompressionCodec(producer.getCompressionType());
         kafkaConfiguration.setMaxInFlightRequest(producer.getMaxInFlightRequestsPerConnection());
         kafkaConfiguration.setEnableIdempotence(producer.isEnableIdempotence());

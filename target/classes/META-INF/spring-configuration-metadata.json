@@ -1,0 +1,239 @@
+{
+  "groups": [
+    {
+      "name": "kafka.abstraction",
+      "type": "com.example.kafka.abstraction.config.KafkaAbstractionProperties",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties"
+    },
+    {
+      "name": "kafka.abstraction.consumer",
+      "type": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties",
+      "sourceMethod": "getConsumer()"
+    },
+    {
+      "name": "kafka.abstraction.producer",
+      "type": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties",
+      "sourceMethod": "getProducer()"
+    },
+    {
+      "name": "kafka.abstraction.security",
+      "type": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties",
+      "sourceMethod": "getSecurity()"
+    }
+  ],
+  "properties": [
+    {
+      "name": "kafka.abstraction.additional-properties",
+      "type": "java.util.Map<java.lang.String,java.lang.Object>",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties"
+    },
+    {
+      "name": "kafka.abstraction.bootstrap-servers",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties"
+    },
+    {
+      "name": "kafka.abstraction.consumer.auto-commit-interval-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 5000
+    },
+    {
+      "name": "kafka.abstraction.consumer.auto-offset-reset",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": "earliest"
+    },
+    {
+      "name": "kafka.abstraction.consumer.enable-auto-commit",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": false
+    },
+    {
+      "name": "kafka.abstraction.consumer.fetch-max-wait-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 500
+    },
+    {
+      "name": "kafka.abstraction.consumer.fetch-min-bytes",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 1
+    },
+    {
+      "name": "kafka.abstraction.consumer.group-id",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": "default-group"
+    },
+    {
+      "name": "kafka.abstraction.consumer.heartbeat-interval-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 3000
+    },
+    {
+      "name": "kafka.abstraction.consumer.key-deserializer",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": "org.apache.kafka.common.serialization.StringDeserializer"
+    },
+    {
+      "name": "kafka.abstraction.consumer.max-poll-interval-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 300000
+    },
+    {
+      "name": "kafka.abstraction.consumer.max-poll-records",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 500
+    },
+    {
+      "name": "kafka.abstraction.consumer.session-timeout-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": 30000
+    },
+    {
+      "name": "kafka.abstraction.consumer.value-deserializer",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Consumer",
+      "defaultValue": "org.apache.kafka.common.serialization.StringDeserializer"
+    },
+    {
+      "name": "kafka.abstraction.producer.acks",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": "all"
+    },
+    {
+      "name": "kafka.abstraction.producer.batch-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 16384
+    },
+    {
+      "name": "kafka.abstraction.producer.buffer-memory",
+      "type": "java.lang.Long",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 33554432
+    },
+    {
+      "name": "kafka.abstraction.producer.compression-type",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": "snappy"
+    },
+    {
+      "name": "kafka.abstraction.producer.delivery-timeout-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 120000
+    },
+    {
+      "name": "kafka.abstraction.producer.enable-idempotence",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": true
+    },
+    {
+      "name": "kafka.abstraction.producer.key-serializer",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": "org.apache.kafka.common.serialization.StringSerializer"
+    },
+    {
+      "name": "kafka.abstraction.producer.linger-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 1
+    },
+    {
+      "name": "kafka.abstraction.producer.max-in-flight-requests-per-connection",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 5
+    },
+    {
+      "name": "kafka.abstraction.producer.request-timeout-ms",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 30000
+    },
+    {
+      "name": "kafka.abstraction.producer.retries",
+      "type": "java.lang.Integer",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": 3
+    },
+    {
+      "name": "kafka.abstraction.producer.value-serializer",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Producer",
+      "defaultValue": "org.apache.kafka.common.serialization.StringSerializer"
+    },
+    {
+      "name": "kafka.abstraction.security.enabled",
+      "type": "java.lang.Boolean",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security",
+      "defaultValue": false
+    },
+    {
+      "name": "kafka.abstraction.security.key-password",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security"
+    },
+    {
+      "name": "kafka.abstraction.security.keystore-location",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security"
+    },
+    {
+      "name": "kafka.abstraction.security.keystore-password",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security"
+    },
+    {
+      "name": "kafka.abstraction.security.keystore-type",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security",
+      "defaultValue": "JKS"
+    },
+    {
+      "name": "kafka.abstraction.security.protocol",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security",
+      "defaultValue": "SSL"
+    },
+    {
+      "name": "kafka.abstraction.security.ssl-endpoint-identification-algorithm",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security",
+      "defaultValue": ""
+    },
+    {
+      "name": "kafka.abstraction.security.truststore-location",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security"
+    },
+    {
+      "name": "kafka.abstraction.security.truststore-password",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security"
+    },
+    {
+      "name": "kafka.abstraction.security.truststore-type",
+      "type": "java.lang.String",
+      "sourceType": "com.example.kafka.abstraction.config.KafkaAbstractionProperties$Security",
+      "defaultValue": "JKS"
+    }
+  ],
+  "hints": []
+}
