@@ -18,6 +18,7 @@ com\example\kafka\abstraction\api\dto\ConsumerSubscriptionRequest.class
 com\example\kafka\abstraction\consumer\KafkaConsumerRoute.class
 com\example\kafka\abstraction\api\exception\GlobalExceptionHandler.class
 com\example\kafka\abstraction\consumer\KafkaObjectHandler.class
+com\example\kafka\abstraction\KafkaAbstractionApplication.class
 com\example\kafka\abstraction\consumer\KafkaObjectConsumerRoute$ObjectProcessor.class
 com\example\kafka\abstraction\consumer\KafkaConsumerService.class
 com\example\kafka\abstraction\api\dto\ConsumerStatusResponse.class
