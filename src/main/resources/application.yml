@@ -45,8 +45,26 @@ kafka:
     example:
       enabled: false
 
+server:
+  port: 8080
+  servlet:
+    context-path: /
+  error:
+    include-message: always
+    include-binding-errors: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: when-authorized
+
 logging:
   level:
     com.example.kafka.abstraction: DEBUG
     org.apache.camel: INFO
     org.apache.kafka: INFO
+    org.springframework.web: INFO

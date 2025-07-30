@@ -8,6 +8,8 @@ A Spring Boot and Apache Camel based Kafka abstraction library that provides sim
 - **SSL/TLS Support**: Full support for certificate-based authentication and authorization (ACLs)
 - **Producer Abstraction**: Simple API for sending messages and objects
 - **Consumer Abstraction**: Easy subscription management with message handlers
+- **REST API**: Complete REST API for HTTP-based Kafka operations
+- **Webhook Support**: HTTP callbacks for consumed messages
 - **Camel Integration**: Built on Apache Camel for robust message routing
 - **Async Support**: Asynchronous message sending capabilities
 - **Type Safety**: Generic support for object serialization/deserialization
@@ -257,6 +259,280 @@ kafka:
 2. Create a feature branch
 3. Add tests for new functionality
 4. Submit a pull request
+
+## REST API
+
+The library also provides a complete REST API for HTTP-based Kafka operations, making it easy to integrate with any language or framework.
+
+### API Endpoints
+
+#### Producer Endpoints
+
+**Send String Message**
+```http
+POST /api/kafka/producer/send
+Content-Type: application/json
+
+{
+  "topic": "my-topic",
+  "key": "user-123",
+  "message": "Hello Kafka!"
+}
+```
+
+**Send Message Asynchronously**
+```http
+POST /api/kafka/producer/send-async
+Content-Type: application/json
+
+{
+  "topic": "my-topic",
+  "key": "user-123", 
+  "message": "Hello Async Kafka!"
+}
+```
+
+**Send Object**
+```http
+POST /api/kafka/producer/send-object
+Content-Type: application/json
+
+{
+  "topic": "user-events",
+  "key": "user-456",
+  "data": {
+    "id": "456",
+    "name": "John Doe",
+    "email": "john@example.com"
+  }
+}
+```
+
+**Send Object Asynchronously**
+```http
+POST /api/kafka/producer/send-object-async
+Content-Type: application/json
+
+{
+  "topic": "user-events",
+  "key": "user-456",
+  "data": {
+    "id": "456",
+    "name": "John Doe",
+    "email": "john@example.com"
+  }
+}
+```
+
+#### Consumer Endpoints
+
+**Subscribe to Topic**
+```http
+POST /api/kafka/consumer/subscribe
+Content-Type: application/json
+
+{
+  "topic": "my-topic",
+  "groupId": "my-consumer-group",
+  "callbackUrl": "https://your-app.com/webhook/kafka"
+}
+```
+
+**Subscribe to Object Messages**
+```http
+POST /api/kafka/consumer/subscribe-object
+Content-Type: application/json
+
+{
+  "topic": "user-events",
+  "groupId": "user-consumer-group",
+  "callbackUrl": "https://your-app.com/webhook/user-events"
+}
+```
+
+**Unsubscribe from Topic**
+```http
+DELETE /api/kafka/consumer/unsubscribe?topic=my-topic&groupId=my-consumer-group
+```
+
+**Get Consumer Status**
+```http
+GET /api/kafka/consumer/status?topic=my-topic&groupId=my-consumer-group
+```
+
+**List All Consumers**
+```http
+GET /api/kafka/consumer/list
+```
+
+### Webhook Integration
+
+When you subscribe to a topic with a callback URL, the library will send HTTP POST requests to your webhook endpoint whenever messages are received:
+
+**Webhook Payload for String Messages:**
+```json
+{
+  "topic": "my-topic",
+  "key": "user-123",
+  "message": "Hello Kafka!",
+  "timestamp": 1640995200000
+}
+```
+
+**Webhook Payload for Object Messages:**
+```json
+{
+  "topic": "user-events",
+  "key": "user-456",
+  "data": {
+    "id": "456",
+    "name": "John Doe",
+    "email": "john@example.com"
+  },
+  "timestamp": 1640995200000
+}
+```
+
+### API Response Format
+
+All API endpoints return responses in this format:
+
+```json
+{
+  "success": true,
+  "message": "Operation completed successfully",
+  "data": { ... },
+  "timestamp": "2023-12-01T10:30:00"
+}
+```
+
+### Error Responses
+
+Error responses follow the same format:
+
+```json
+{
+  "success": false,
+  "message": "Error description",
+  "data": { "field": "validation error" },
+  "timestamp": "2023-12-01T10:30:00"
+}
+```
+
+### API Documentation Endpoints
+
+**API Health Check**
+```http
+GET /api/health
+```
+
+**API Information**
+```http
+GET /api/info
+```
+
+**API Examples**
+```http
+GET /api/examples
+```
+
+### Using the API
+
+#### With cURL
+
+```bash
+# Send a message
+curl -X POST http://localhost:8080/api/kafka/producer/send \
+  -H "Content-Type: application/json" \
+  -d '{
+    "topic": "test-topic",
+    "key": "test-key",
+    "message": "Hello from cURL!"
+  }'
+
+# Subscribe to messages
+curl -X POST http://localhost:8080/api/kafka/consumer/subscribe \
+  -H "Content-Type: application/json" \
+  -d '{
+    "topic": "test-topic",
+    "groupId": "test-group",
+    "callbackUrl": "https://webhook.site/your-unique-url"
+  }'
+```
+
+#### With Python
+
+```python
+import requests
+
+# Send a message
+response = requests.post('http://localhost:8080/api/kafka/producer/send', 
+  json={
+    'topic': 'test-topic',
+    'key': 'test-key',
+    'message': 'Hello from Python!'
+  })
+
+print(response.json())
+
+# Subscribe to messages
+response = requests.post('http://localhost:8080/api/kafka/consumer/subscribe',
+  json={
+    'topic': 'test-topic',
+    'groupId': 'python-group',
+    'callbackUrl': 'https://your-app.com/webhook'
+  })
+
+print(response.json())
+```
+
+#### With JavaScript/Node.js
+
+```javascript
+// Send a message
+const response = await fetch('http://localhost:8080/api/kafka/producer/send', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    topic: 'test-topic',
+    key: 'test-key',
+    message: 'Hello from JavaScript!'
+  })
+});
+
+const result = await response.json();
+console.log(result);
+
+// Subscribe to messages
+const subscribeResponse = await fetch('http://localhost:8080/api/kafka/consumer/subscribe', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    topic: 'test-topic',
+    groupId: 'js-group',
+    callbackUrl: 'https://your-app.com/webhook'
+  })
+});
+
+const subscribeResult = await subscribeResponse.json();
+console.log(subscribeResult);
+```
+
+## Server Configuration
+
+The REST API server runs on port 8080 by default. You can customize this in your `application.yml`:
+
+```yaml
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+kafka:
+  abstraction:
+    bootstrap-servers: your-kafka-cluster:9092
+    # ... other kafka configuration
+```
 
 ## License
 
